@@ -7,18 +7,29 @@
 	*/
 	header('X-XSS-Protection:0');
 	
+	$html_messages = null;
+
+
 	if(isset($_GET["resetdb"]) && $_GET["resetdb"]) {
 		require_once "resetdatabase.php";
 		resetDatabase();
 		header("location: index.php");
 	}
 
+	
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		insertMessage($_POST["name"], $_POST["message"]);
 	}
-	
+
 	$messages = getAllMessages();
-	
+	foreach($messages as $message) {
+		$html_messages .= "<div class='message_wrapper'>";
+		$html_messages .= "<div class='message_header'>$message->name<span style='float:right;'>$message->message_date</span></div>";
+		$html_messages .= "<div class='message_content'>$message->message</div>";
+		$html_messages .= "</div>";
+	}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,14 +55,7 @@
 			<h2>Berichten:</h2>
 			<br/>
 			<div id="message_container">
-				<?php
-					foreach($messages as $message) {
-						echo "<div class='message_wrapper'>";
-						echo "<div class='message_header'>$message->name<span style='float:right;'>$message->message_date</span></div>";
-						echo "<div class='message_content'>$message->message</div>";
-						echo "</div>";
-					}
-				?>
+				<?=$html_messages;?>
 			</div>
 		</div>
 	</body>
